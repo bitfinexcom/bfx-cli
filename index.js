@@ -12,9 +12,13 @@ require('pipe-args').load()
 const _isEmpty = require('lodash/isEmpty')
 const debug = require('debug')('>')
 const yArgs = require('yargs')
+const updateNotifier = require('update-notifier')
 
 const commands = require('./lib/commands')
 const loadConfig = require('./lib/load_config')
+const manifest = require('./package.json')
+
+updateNotifier({ pkg: manifest }).notify()
 
 const run = async () => {
   const argv = yArgs
