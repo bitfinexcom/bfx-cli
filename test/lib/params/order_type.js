@@ -36,7 +36,7 @@ describe('order type param validator', () => {
       SEPERATORS.forEach((sep) => {
         orderTypeParam.TYPES.forEach((type) => {
           const src = `${decl}${sep}${type.join('-')}`
-          const target = `EXCHANGE_${type.join('_')}`
+          const target = `EXCHANGE ${type.join(' ')}`
           const match = orderTypeParam('test', src)
 
           assert.strictEqual(match, target, `did not detect EXCHANGE_${type} order`)
@@ -51,7 +51,7 @@ describe('order type param validator', () => {
       SEPERATORS.forEach((sep) => {
         orderTypeParam.TYPES.forEach((type) => {
           const src = `${trashToken}${sep}${type.join('-')}`
-          const target = type.join('_')
+          const target = type.join(' ')
           const match = orderTypeParam('test', src)
 
           assert.strictEqual(match, target, `did not detect ${type} order`)
