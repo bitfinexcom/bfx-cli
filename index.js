@@ -5,6 +5,7 @@ if (!process.env.DEBUG) {
   process.env.DEBUG = '>'
 }
 
+require('bfx-hf-util/lib/catch_uncaught_errors')
 require('./lib/override_bfx_api_node_debug')
 require('pipe-args').load()
 
