@@ -2,21 +2,22 @@
 
 [![Build Status](https://travis-ci.org/f3rno/bfx-cli.svg?branch=master)](https://travis-ci.org/f3rno/bfx-cli)
 
-> WIP, relies in black magic coming soon to `bitfinex-api-node`
-
 Thin wrapper around the examples included with [the official Bitfinex Node.JS API library](https://bitfinexcom/bitfinex-api-node) that provides a CLI interface for specifying parameters and rendering of results.
 
-Can be configured with API credentials that are encrypted locally on disk, pull them from the environment, or from an unencrypted `.bfx-cli-env` file in the working or home (~) directory.
+Can be configured with API credentials that are encrypted locally on disk pull or them from the environment.
 
 ### Features
 
-* uses the official library for all tasks
-* encrypted credential storage
-
-### TODO
-
-* [ ] Encrypted API credential support (env/disk)
-* [ ] Add support for all existing examples
+* Cross platform (Linux, MacOS, and Windows)
+* Uses the official library for all tasks
+* **Encrypted** credential storage in `~/.bfxclirc`
+* Nearly full API method coverage
+  * Data feed streaming
+  * Order execution
+  * Order & position manipulation
+  * Wallet transfers
+  * Platform status reporting
+  * And more!
 
 ### Installation
 
@@ -24,36 +25,43 @@ Can be configured with API credentials that are encrypted locally on disk, pull 
 npm i -g bfx-cli
 ```
 
-### Usage (WIP)
+To configure your API credentials, run `bfx-cli credentials`
 
-* `bfx-cli --help`
-* `bfx-cli balances --ccy USD --type trading`
-* `bfx-cli orders`
-* `bfx-cli cancel-order --id 1234`
-* `bfx-cli cancel-all-orders`
-* `bfx-cli submit-order LEO/USD -42 @ 2`
-* `bfx-cli close-all-positions`
-* and more!
+### Usage
 
-### Configuring (WIP)
+Run `bfx-cli` from a terminal to see a list of available commands:
 
-There are three options for configuring `bfx-cli`:
+```bash
+bfx-cli credentials                  Configure API credentials
+bfx-cli watch-liquidations           Monitor the liquidations feed
+bfx-cli watch-candles <market> <tf>  Monitor a candle feed
+bfx-cli watch-trades <market>        Monitor a trade feed
+bfx-cli watch-order-book [market]    Render a live order book
+bfx-cli margin-info                  Fetch and display margin information
+bfx-cli transfer <q> <ccy> <s> <d>   Transfer between wallets
+bfx-cli balances                     Fetch and display wallet balances
+bfx-cli positions                    Fetch & display all open positions
+bfx-cli order-history <market>       Fetch order history
+bfx-cli trade-history <market>       Fetch trade history
+bfx-cli close [market]               Close open position(s)
+bfx-cli claim [market]               Claim open position(s)
+bfx-cli order                        Submit an order
+bfx-cli currencies                   Fetch & display all available currencies
+bfx-cli tickers [market]             Fetch and display one or multiple tickers
+bfx-cli cancel                       Cancel all open orders
+bfx-cli orders [market]              Fetch & display all open orders
+bfx-cli status                       Query platform status
+```
 
-* Include relevant values in the environment when invoking `bfx-cli`
-* Run `bfx-cli init` to create an encrypted `.bfx-cli-env` file in your home directory
-* Create a plaintext `.bfx-cli-env` file in your home directory manually
+### Configuring
 
-Regardless of the method utilized, the available options are the same in all cases:
+To configure **bfx-cli**, run `bfx-cli configure` and follow the instructions. Alternatively, you can supply credentials on the environment with the `API_KEY` and `API_SECRET` env variables.
 
-* `API_KEY` - required for commands accessing private data
-* `API_SECRET` - required for commands accessing private data
+The following *extra* environment variables are supported:
+
 * `WS_URL` - optional Bitfinex WSv2 endpoint URL
 * `REST_URL` - optional Bitfinex RESTv2 endpoint URL
 * `SOCKS_PROXY_URL` - optional local socksv4 proxy URL to use for both RESTv2 & WSv2 transports
-
-### Sample Output (WIP)
-
-![bfx-cli positions -pl](https://github.com/f3rno/bfx-cli/raw/master/readme_assets/positions_screenie.png)
 
 ### Contributing
 
@@ -62,3 +70,8 @@ Regardless of the method utilized, the available options are the same in all cas
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
+
+### Example: Opening & Closing a Position
+
+![opening and closing a position](/readme_assets/position.gif)
+
