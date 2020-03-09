@@ -22,6 +22,7 @@ updateNotifier({ pkg: manifest }).notify()
 
 const run = async () => {
   let commandRequiresAuth = false // cannot use argv below due to async
+  let piped = false
 
   const argv = yArgs
     .scriptName('bfx-cli')
@@ -30,6 +31,15 @@ const run = async () => {
     .middleware((argv) => {
       const { _ } = argv
       const suppliedCommand = _[0]
+
+      if (_.length === 2) {
+        try {
+          JSON.parse(_[1])
+          console.warn('pipe detected, credentials must be on env!')
+          piped = true
+          return
+        } catch {} // eslint-disable-line
+      }
 
       if (!suppliedCommand) {
         return
@@ -45,7 +55,7 @@ const run = async () => {
       commandRequiresAuth = _auth
     })
     .middleware(async () => {
-      if (!commandRequiresAuth) {
+      if (!commandRequiresAuth || piped) {
         return
       }
 
