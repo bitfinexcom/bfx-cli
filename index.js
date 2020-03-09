@@ -21,11 +21,34 @@ const manifest = require('./package.json')
 updateNotifier({ pkg: manifest }).notify()
 
 const run = async () => {
+  let commandRequiresAuth = false // cannot use argv below due to async
+
   const argv = yArgs
     .scriptName('bfx-cli')
     .usage('Usage: bfx-cli [command] <options>')
     .demandCommand(1, 'A command is required')
+    .middleware((argv) => {
+      const { _ } = argv
+      const suppliedCommand = _[0]
+
+      if (!suppliedCommand) {
+        return
+      }
+
+      const command = commands.find(c => c._id === suppliedCommand)
+
+      if (!command) {
+        return // handled by yargs for us
+      }
+
+      const { _auth } = command
+      commandRequiresAuth = _auth
+    })
     .middleware(async () => {
+      if (!commandRequiresAuth) {
+        return
+      }
+
       const config = await loadConfig()
       const { key, secret } = config
 
