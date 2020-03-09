@@ -13,4 +13,5 @@ dist/
 coverage/
 .undodir
 tags
-.salt.json
+.settings.json
+Session.vim
