@@ -25,9 +25,10 @@
 
   "rules": {
     "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 1 }],
+    "promise/no-callback-in-promise": 0,
     "lodash/prefer-lodash-method": 0,
-    "node/no-missing-require": ["error", {
-      "allowModules": ["bitfinex-api-node"]
-    }]
+    "lodash/prefer-noop": 0,
+    "lodash/prefer-constant": 0,
+    "node/no-unpublished-require": 0
   }
 }
