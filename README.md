@@ -32,25 +32,27 @@ To configure your API credentials, run `bfx-cli credentials`
 Run `bfx-cli` from a terminal to see a list of available commands:
 
 ```bash
-bfx-cli credentials                  Configure API credentials
-bfx-cli watch-liquidations           Monitor the liquidations feed
-bfx-cli watch-candles <market> <tf>  Monitor a candle feed
-bfx-cli watch-trades <market>        Monitor a trade feed
-bfx-cli watch-order-book [market]    Render a live order book
-bfx-cli margin-info                  Fetch and display margin information
-bfx-cli transfer <q> <ccy> <s> <d>   Transfer between wallets
-bfx-cli balances                     Fetch and display wallet balances
-bfx-cli positions                    Fetch & display all open positions
-bfx-cli order-history <market>       Fetch order history
-bfx-cli trade-history <market>       Fetch trade history
-bfx-cli close [market]               Close open position(s)
-bfx-cli claim [market]               Claim open position(s)
-bfx-cli order                        Submit an order
-bfx-cli currencies                   Fetch & display all available currencies
-bfx-cli tickers [market]             Fetch and display one or multiple tickers
-bfx-cli cancel                       Cancel all open orders
-bfx-cli orders [market]              Fetch & display all open orders
-bfx-cli status                       Query platform status
+bfx-cli credentials                      Configure API credentials
+bfx-cli watch-liquidations               Monitor the liquidations feed
+bfx-cli watch-candles <market> <tf>      Monitor a candle feed
+bfx-cli watch-trades <market>            Monitor a trade feed
+bfx-cli watch-order-book [market]        Render a live order book
+bfx-cli margin-info                      Fetch and display margin information
+bfx-cli transfer <q> <ccy> <s> <d>       Transfer between wallets
+bfx-cli balances                         Fetch and display wallet balances
+bfx-cli positions                        Fetch & display all open positions
+bfx-cli order-history <market>           Fetch order history
+bfx-cli trade-history <market>           Fetch trade history
+bfx-cli close [market]                   Close open position(s)
+bfx-cli claim [market]                   Claim open position(s)
+bfx-cli order                            Submit an order
+bfx-cli currencies                       Fetch & display all available currencies
+bfx-cli tickers [market]                 Fetch and display one or multiple tickers
+bfx-cli cancel                           Cancel all open orders
+bfx-cli orders [market]                  Fetch & display all open orders
+bfx-cli status                           Query platform status
+bfx-cli download-candles <market> <tf>   Download a candle dataset
+<count>
 ```
 
 ### Configuring
