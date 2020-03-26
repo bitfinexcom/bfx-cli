@@ -2,7 +2,7 @@
 
 const fs = require('fs')
 
-const SETTINGS_FN = './.settings.json'
+const SETTINGS_FN = '.settings.json'
 const SALT_LENGTH = 32
 const SALT_SRC = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
@@ -11,7 +11,7 @@ const generate = () => {
   let saltExists = false
 
   try {
-    fs.statSync(SETTINGS_FN)
+    fs.statSync(`${__dirname}/../${SETTINGS_FN}`)
     saltExists = true
   } catch (e) { // eslint-disable-line
     saltExists = false
@@ -23,7 +23,7 @@ const generate = () => {
     }
 
     try {
-      fs.writeFileSync(SETTINGS_FN, JSON.stringify({
+      fs.writeFileSync(`${__dirname}/../${SETTINGS_FN}`, JSON.stringify({
         affiliateCode: 'xZvWHMNR',
         salt
       }))
