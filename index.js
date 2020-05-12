@@ -9,9 +9,8 @@ require('bfx-hf-util/lib/catch_uncaught_errors')
 require('./lib/override_bfx_api_node_debug')
 require('pipe-args').load()
 
-const _isEmpty = require('lodash/isEmpty')
-const debug = require('debug')('>')
 const yArgs = require('yargs')
+const _isEmpty = require('lodash/isEmpty')
 const updateNotifier = require('update-notifier')
 
 const log = require('./lib/util/log')
