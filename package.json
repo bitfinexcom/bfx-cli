@@ -23,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/f3rno/bfx-cli.git"
+    "url": "https://github.com/bitfinexcom/bfx-cli.git"
   },
   "keywords": [
     "trading",
@@ -33,7 +33,7 @@
   "author": "Cris Mihalache <cris.m@bitfinex.com> (https://www.bitfinex.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/f3rno/bfx-cli/issues"
+    "url": "https://github.com/bitfinexcom/bfx-cli/issues"
   },
   "devDependencies": {
     "chai": "^4.2.0",
