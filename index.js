@@ -14,6 +14,7 @@ const debug = require('debug')('>')
 const yArgs = require('yargs')
 const updateNotifier = require('update-notifier')
 
+const log = require('./lib/util/log')
 const commands = require('./lib/commands')
 const loadConfig = require('./lib/load_config')
 const manifest = require('./package.json')
@@ -35,7 +36,7 @@ const run = async () => {
       if (_.length === 2) {
         try {
           JSON.parse(_[1])
-          console.warn('pipe detected, credentials must be on env!')
+          log('pipe detected, credentials must be on env!'.yellow)
           piped = true
           return
         } catch {} // eslint-disable-line
@@ -63,8 +64,11 @@ const run = async () => {
       const { key, secret } = config
 
       if (_isEmpty(key) || _isEmpty(secret)) {
-        console.log('No API credentials set; run \'bfx-cli credentials\' to set them')
-        console.log('')
+        log([
+          'No API credentials set;'.red,
+          'run \'bfx-cli credentials\' to set them\n'.cyan
+        ].join(' '))
+
         return
       }
 
@@ -83,5 +87,5 @@ const run = async () => {
 try {
   run()
 } catch (e) {
-  debug('%s', e.message)
+  log('%s'.red, e.message)
 }
